@@ -1,0 +1,23 @@
+import java.util.*;
+import java.lang.Math;
+public class Main{
+
+     public static void main(String []args){
+        
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int t=n;
+        while (true)
+        {
+            double sq=Math.sqrt(t);
+            double cb=Math.cbrt(t);
+            if(sq==(int)sq && cb==(int)cb)
+            {
+                System.out.print(t);
+                break;
+            }
+            t-=1;
+        }
+        
+     }
+}
