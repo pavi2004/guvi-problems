@@ -1,0 +1,118 @@
+import java.io.*; 
+import java.lang.Math; 
+import java.util.*;
+class Main { 
+    
+    public static void main(String[] args) 
+    {   
+        Scanner sc=new Scanner(System.in);
+          int sum=sc.nextInt();
+        int prod=sc.nextInt();
+        int k=sc.nextInt();
+        
+        
+        int root[]=new int[prod];
+        int c=0;
+         for (int i = 2; i <= Math.sqrt(prod); i++) 
+         { 
+            
+            while (prod % i == 0) 
+            { 
+                root[c]=i;
+                c++;
+                prod /= i; 
+            } 
+        } 
+  
+        if (prod > 2) 
+        {    
+            root[c]=prod;
+            c++;
+        }
+        
+        int sum2=0;
+        
+        for (int i=0;i<c;i++)
+        
+            sum2+=root[i];
+            
+        if (k==c)
+        {   
+            if (sum2==sum)
+             //fun_print(fact[],sum,temp);
+             for (int i=0;i<c;i++)
+                System.out.print(root[i]+" ");
+           else
+           {
+               System.out.print("No");
+               
+           }
+        
+            
+        }
+        
+        else if (c<k)
+        { 
+            int diff=k-c;
+            int ind_diff=sum-sum2;
+         
+            //System.out.print(diff,ind_diff);
+            if (diff==ind_diff)
+            {
+               root[c]=1;
+               for (int i=0;i<=c;i++)
+             
+               System.out.print(root[i]+" ");
+            }
+           else
+            {
+            
+              System.out.print("No");    
+            }
+               
+        }
+        
+        else if(c>k)
+        {
+            int d=0,l=0;
+            int list[]=new int[k];
+            int j=0;
+            
+            while (d<c)
+            {
+             if(d+1>=c)
+                {
+                 list[j]=root[d];
+                 j++;
+                }
+             else
+                 {
+                     
+                  list[j]=root[d]*root[d+1];
+                  j++;
+                  
+                 }
+                 if(j==k || d==c)
+                    break;
+                 
+                d+=2;
+            }
+            int sum3=0;
+        
+            for (int i=0;i<j;i++)
+               sum3+=list[i];
+        
+            if (sum3==sum)
+            {
+               for (int m=0;m<j;m++)
+               System.out.print(list[m]+" ");
+            }
+         
+            else
+           {
+              System.out.print("NO");
+           }    
+        }
+        
+      }
+    } 
